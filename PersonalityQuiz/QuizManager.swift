@@ -15,9 +15,44 @@ class QuizManager {
     
     private init() {}
     
+    /// Currently selected quiz
+    var currentQuiz: Quiz?
+    
+    /// Whether to randomize question order (Stretch Goal 2)
+    var shouldRandomizeQuestions: Bool = true
+    
+    /// Whether to randomize answer order (Stretch Goal 2)
+    var shouldRandomizeAnswers: Bool = true
+    
     /// All available quizzes
     var availableQuizzes: [Quiz] {
         return [animalQuiz, colorQuiz]
+    }
+    
+    /// Reset the current quiz selection
+    func resetCurrentQuiz() {
+        currentQuiz = nil
+    }
+    
+    /// Get randomized quiz (Stretch Goal 2)
+    func getRandomizedQuiz(_ quiz: Quiz) -> Quiz {
+        var questions = quiz.questions
+        
+        // Randomize question order
+        if shouldRandomizeQuestions {
+            questions.shuffle()
+        }
+        
+        // Randomize answer order within each question
+        if shouldRandomizeAnswers {
+            questions = questions.map { question in
+                var randomizedQuestion = question
+                randomizedQuestion.answers.shuffle()
+                return randomizedQuestion
+            }
+        }
+        
+        return Quiz(id: quiz.id, title: quiz.title, emoji: quiz.emoji, questions: questions)
     }
     
     // MARK: - Animal Quiz
@@ -127,7 +162,7 @@ struct Quiz {
     let id: UUID
     let title: String
     let emoji: String
-    let questions: [Question]
+    var questions: [Question] // Changed to var for randomization
 }
 
 // Note: QuizResult is now defined in QuizResult.swift to avoid ambiguity

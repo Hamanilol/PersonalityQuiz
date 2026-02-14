@@ -46,7 +46,15 @@ class QuizSelectionViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         button.layer.cornerRadius = 10
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        
+        // Use configuration instead of deprecated contentEdgeInsets
+        var config = UIButton.Configuration.filled()
+        config.title = title
+        config.baseBackgroundColor = color
+        config.baseForegroundColor = .white
+        config.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        config.cornerStyle = .medium
+        button.configuration = config
     }
     
     // MARK: - Properties
@@ -84,15 +92,9 @@ class QuizSelectionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowQuestions" {
-            // Navigate to NavigationController containing QuestionViewController
-            if let navController = segue.destination as? UINavigationController,
-               let questionVC = navController.topViewController as? QuestionViewController {
-                questionVC.selectedQuiz = selectedQuiz
-            }
-            // Or if navigating directly to QuestionViewController
-            else if let questionVC = segue.destination as? QuestionViewController {
-                questionVC.selectedQuiz = selectedQuiz
-            }
+            // Quiz is already set in QuizManager.shared.currentQuiz
+            // QuestionViewController will read it from there via @IBSegueAction
+            print("✅ Navigating to QuestionViewController")
         }
     }
 }

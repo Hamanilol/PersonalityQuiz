@@ -97,12 +97,14 @@ class ResultsViewController: UIViewController {
             return
         }
         
-        // Create quiz result
+        // Create quiz result with all required parameters
         let result = QuizResult(
-            quizID: quiz.id,
+            id: UUID(),
             quizTitle: quiz.title,
-            result: mostCommonAnswer,
-            date: Date()
+            quizEmoji: quiz.emoji,
+            resultAnimal: mostCommonAnswer,
+            date: Date(),
+            timeTaken: 0.0 // TODO: Implement timer tracking for stretch goal
         )
         
         // Save to history

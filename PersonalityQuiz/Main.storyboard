@@ -28,7 +28,7 @@
         <!--Introduction View Controller-->
         <scene sceneID="home-scene">
             <objects>
-                <viewController id="Home-VC" customClass="IntroductionViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Home-VC" customClass="IntroductionViewController" customModule="PersonalityQuiz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="home-view">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,6 +409,7 @@
                         <outlet property="multiSwitch4" destination="switch4" id="5sW-8h-Zd5"/>
                         <outlet property="multipleStackView" destination="switches-stack" id="0vH-Tm-2c4"/>
                         <outlet property="questionLabel" destination="question-subtitle" id="rob-bo-qOJ"/>
+                        <outlet property="questionProgressView" destination="question-progress" id="FEM-G6-2t7"/>
                         <outlet property="rangedLabel1" destination="dislike-label" id="OjF-zD-0IE"/>
                         <outlet property="rangedLabel2" destination="like-label" id="kqf-eC-raN"/>
                         <outlet property="rangedSlider" destination="answer-slider" id="rNl-vm-VrO"/>
@@ -605,14 +606,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="back-button-history">
-                                <rect key="frame" x="19.999999999999996" y="198" width="61.666666666666657" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clear-button-history">
                                 <rect key="frame" x="356" y="198" width="64" height="35"/>
                                 <state key="normal" title="Button"/>
@@ -620,8 +613,11 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="clearHistoryTapped:" destination="QuizHistory-VC" eventType="touchUpInside" id="VdJ-2H-aJg"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="history-title">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Quiz History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="history-title">
                                 <rect key="frame" x="30" y="263" width="380" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="history-title-height"/>
@@ -630,7 +626,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="history-item1">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="history-item1">
                                 <rect key="frame" x="30" y="333" width="380" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🦁 You are a 🦁!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item1-result">
@@ -680,7 +676,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="history-item2">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="history-item2">
                                 <rect key="frame" x="30" y="473" width="380" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐱 You are a 🐱!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item2-result">
@@ -730,7 +726,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="history-item3">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="history-item3">
                                 <rect key="frame" x="30" y="613" width="380" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔴 You are a Red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-result">
@@ -739,7 +735,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Animal Are You?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-quiz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Color Are You?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-quiz">
                                         <rect key="frame" x="20" y="44" width="340" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -784,12 +780,9 @@
                         <viewLayoutGuide key="safeArea" id="history-safe-area"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="back-button-history" firstAttribute="leading" secondItem="history-safe-area" secondAttribute="leading" constant="20" id="history-back-leading"/>
-                            <constraint firstItem="back-button-history" firstAttribute="top" secondItem="history-safe-area" secondAttribute="top" constant="20" id="history-back-top"/>
                             <constraint firstItem="clear-button-history" firstAttribute="top" secondItem="history-safe-area" secondAttribute="top" constant="20" id="history-clear-top"/>
                             <constraint firstItem="history-safe-area" firstAttribute="trailing" secondItem="clear-button-history" secondAttribute="trailing" constant="20" id="history-clear-trailing"/>
                             <constraint firstItem="history-title" firstAttribute="leading" secondItem="history-safe-area" secondAttribute="leading" constant="30" id="history-title-leading"/>
-                            <constraint firstItem="history-title" firstAttribute="top" secondItem="back-button-history" secondAttribute="bottom" constant="30" id="history-title-top"/>
                             <constraint firstItem="history-safe-area" firstAttribute="trailing" secondItem="history-title" secondAttribute="trailing" constant="30" id="history-title-trailing"/>
                             <constraint firstItem="history-item1" firstAttribute="leading" secondItem="history-safe-area" secondAttribute="leading" constant="30" id="item1-leading-constraint"/>
                             <constraint firstItem="history-item1" firstAttribute="top" secondItem="history-title" secondAttribute="bottom" constant="30" id="item1-top-constraint"/>
@@ -803,6 +796,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="history-nav-item"/>
+                    <connections>
+                        <outlet property="item1DateLabel" destination="item1-date" id="e7F-kJ-q7i"/>
+                        <outlet property="item1QuizLabel" destination="item1-quiz" id="eAu-eK-021"/>
+                        <outlet property="item1ResultLabel" destination="item1-result" id="y9q-vN-4xw"/>
+                        <outlet property="item1TimeLabel" destination="item1-time" id="lpM-4c-7U9"/>
+                        <outlet property="item1View" destination="history-item1" id="MRb-0Z-Ijj"/>
+                        <outlet property="item2DateLabel" destination="item2-date" id="UvR-Hh-biw"/>
+                        <outlet property="item2QuizLabel" destination="item2-quiz" id="dmL-rg-SfS"/>
+                        <outlet property="item2ResultLabel" destination="item2-result" id="TKR-Cz-gw2"/>
+                        <outlet property="item2TimeLabel" destination="item2-time" id="6Oc-oI-IdF"/>
+                        <outlet property="item2View" destination="history-item1" id="Mtk-Nc-uoM"/>
+                        <outlet property="item3DateLabel" destination="item3-date" id="WqV-ju-Ibp"/>
+                        <outlet property="item3QuizLabel" destination="item3-quiz" id="P96-8F-tpD"/>
+                        <outlet property="item3ResultLabel" destination="item3-result" id="L2T-6H-vse"/>
+                        <outlet property="item3TimeLabel" destination="item3-time" id="MeF-We-YQd"/>
+                        <outlet property="item3View" destination="history-item3" id="CBK-zX-UEC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="history-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -810,7 +820,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hhs-aW-hxw"/>
+        <segue reference="15f-Rk-Re7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

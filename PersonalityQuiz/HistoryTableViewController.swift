@@ -8,28 +8,51 @@
 import UIKit
 
 /// Displays a list of previously completed quiz results (Stretch Goal 4)
-class HistoryTableViewController: UITableViewController {
+class HistoryTableViewController: UIViewController {
     
     // MARK: - Properties
     
     /// Array of saved quiz results
     var quizHistory: [QuizResult] = []
     
+    // MARK: - Outlets
+    
+    // History Item 1
+    @IBOutlet weak var item1View: UIView!
+    @IBOutlet weak var item1ResultLabel: UILabel!
+    @IBOutlet weak var item1QuizLabel: UILabel!
+    @IBOutlet weak var item1DateLabel: UILabel!
+    @IBOutlet weak var item1TimeLabel: UILabel!
+    
+    // History Item 2
+    @IBOutlet weak var item2View: UIView!
+    @IBOutlet weak var item2ResultLabel: UILabel!
+    @IBOutlet weak var item2QuizLabel: UILabel!
+    @IBOutlet weak var item2DateLabel: UILabel!
+    @IBOutlet weak var item2TimeLabel: UILabel!
+    
+    // History Item 3
+    @IBOutlet weak var item3View: UIView!
+    @IBOutlet weak var item3ResultLabel: UILabel!
+    @IBOutlet weak var item3QuizLabel: UILabel!
+    @IBOutlet weak var item3DateLabel: UILabel!
+    @IBOutlet weak var item3TimeLabel: UILabel!
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up navigation
         title = "Quiz History"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .trash,
-            target: self,
-            action: #selector(clearHistoryTapped)
-        )
         
         // Load history from storage
         loadHistory()
+        
+        // Set up clear button
+        setupClearButton()
+        
+        // Set up back button
+        setupBackButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,21 +61,82 @@ class HistoryTableViewController: UITableViewController {
         loadHistory()
     }
     
+    // MARK: - Setup
+    
+    func setupClearButton() {
+        // Clear button should call clearHistoryTapped when tapped
+        // Connect this in storyboard as Touch Up Inside action
+    }
+    
+    func setupBackButton() {
+        // Back button should dismiss or pop view controller
+        // Connect this in storyboard as Touch Up Inside action
+    }
+    
     // MARK: - Data Loading
     
-    /// Loads quiz history from UserDefaults
+    /// Loads quiz history from UserDefaults and updates UI
     func loadHistory() {
         quizHistory = QuizHistoryManager.shared.loadHistory()
         quizHistory = quizHistory.reversed() // Show newest first
-        tableView.reloadData()
         
         print("✅ Loaded \(quizHistory.count) quiz results")
+        
+        // Update UI
+        updateHistoryUI()
+    }
+    
+    /// Updates the three history item views with data
+    func updateHistoryUI() {
+        // Show up to 3 most recent results
+        
+        // Item 1
+        if quizHistory.count > 0 {
+            let result = quizHistory[0]
+            item1View.isHidden = false
+            item1ResultLabel.text = result.resultDisplayText
+            item1QuizLabel.text = result.quizTitle
+            item1DateLabel.text = result.formattedDate
+            item1TimeLabel.text = result.formattedTime
+        } else {
+            item1View.isHidden = true
+        }
+        
+        // Item 2
+        if quizHistory.count > 1 {
+            let result = quizHistory[1]
+            item2View.isHidden = false
+            item2ResultLabel.text = result.resultDisplayText
+            item2QuizLabel.text = result.quizTitle
+            item2DateLabel.text = result.formattedDate
+            item2TimeLabel.text = result.formattedTime
+        } else {
+            item2View.isHidden = true
+        }
+        
+        // Item 3
+        if quizHistory.count > 2 {
+            let result = quizHistory[2]
+            item3View.isHidden = false
+            item3ResultLabel.text = result.resultDisplayText
+            item3QuizLabel.text = result.quizTitle
+            item3DateLabel.text = result.formattedDate
+            item3TimeLabel.text = result.formattedTime
+        } else {
+            item3View.isHidden = true
+        }
+        
+        // If no history, could show empty state message
+        if quizHistory.isEmpty {
+            print("No quiz history to display")
+            // Could show a label here saying "No quiz results yet"
+        }
     }
     
     // MARK: - Actions
     
     /// Clears all quiz history
-    @objc func clearHistoryTapped() {
+    @IBAction func clearHistoryTapped(_ sender: UIButton) {
         let alert = UIAlertController(
             title: "Clear History",
             message: "Are you sure you want to delete all quiz history? This cannot be undone.",
@@ -69,83 +153,9 @@ class HistoryTableViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    // MARK: - TableView Data Source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if quizHistory.isEmpty {
-            // Show a message if no history
-            let messageLabel = UILabel(frame: tableView.bounds)
-            messageLabel.text = "No quiz results yet.\nTake a quiz to see your history!"
-            messageLabel.textAlignment = .center
-            messageLabel.numberOfLines = 0
-            messageLabel.textColor = .systemGray
-            tableView.backgroundView = messageLabel
-            tableView.separatorStyle = .none
-        } else {
-            tableView.backgroundView = nil
-            tableView.separatorStyle = .singleLine
-        }
-        
-        return quizHistory.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell")
-            ?? UITableViewCell(style: .subtitle, reuseIdentifier: "HistoryCell")
-        
-        let result = quizHistory[indexPath.row]
-        
-        // Configure cell
-        cell.textLabel?.text = result.resultDisplayText
-        cell.detailTextLabel?.text = "\(result.quizTitle) • \(result.formattedDate) • \(result.formattedTime)"
-        cell.detailTextLabel?.textColor = .systemGray
-        cell.accessoryType = .disclosureIndicator
-        
-        return cell
-    }
-    
-    // MARK: - TableView Delegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let result = quizHistory[indexPath.row]
-        
-        // Show detail alert
-        let alert = UIAlertController(
-            title: result.resultDisplayText,
-            message: """
-            Quiz: \(result.quizTitle)
-            Completed: \(result.formattedDate)
-            Time Taken: \(result.formattedTime)
-            """,
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Remove from array
-            quizHistory.remove(at: indexPath.row)
-            
-            // Save updated history (need to reverse back to original order)
-            var savedHistory = quizHistory.reversed()
-            QuizHistoryManager.shared.saveHistory(Array(savedHistory))
-            
-            // Delete row with animation
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            // Reload to show empty state if needed
-            if quizHistory.isEmpty {
-                tableView.reloadData()
-            }
-        }
+    /// Goes back to previous screen
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
 }
+

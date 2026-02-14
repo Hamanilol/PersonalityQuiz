@@ -167,7 +167,13 @@ class QuestionViewController: UIViewController {
             button?.setTitleColor(.white, for: .normal)
             button?.titleLabel?.numberOfLines = 0
             button?.titleLabel?.textAlignment = .center
-            button?.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+            
+            // Use configuration API instead of deprecated contentEdgeInsets
+            var config = UIButton.Configuration.filled()
+            config.baseBackgroundColor = .systemBlue
+            config.baseForegroundColor = .white
+            config.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
+            button?.configuration = config
         }
     }
     

@@ -4,4 +4,31 @@
    <FileRef
       location = "self:">
    </FileRef>
+   <FileRef
+      location = "group:AppDelegate.swift">
+   </FileRef>
+   <FileRef
+      location = "group:SceneDelegate.swift">
+   </FileRef>
+   <FileRef
+      location = "group:.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ResultsViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:QuizSelectionViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Question.swift">
+   </FileRef>
+   <FileRef
+      location = "group:QuizResult.swift">
+   </FileRef>
+   <FileRef
+      location = "group:QuizManager.swift">
+   </FileRef>
+   <FileRef
+      location = "group:FILES_RESTORED.md">
+   </FileRef>
 </Workspace>
