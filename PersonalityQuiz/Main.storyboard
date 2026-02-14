@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nav-01">
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="nav-scene-01">
+            <objects>
+                <navigationController id="Nav-01" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nav-bar-01">
+                        <rect key="frame" x="0.0" y="124" width="440" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Home-VC" kind="relationship" relationship="rootViewController" id="nav-segue-01"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nav-responder-01" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-800" y="100"/>
+        </scene>
+        <!--Introduction View Controller-->
+        <scene sceneID="home-scene">
+            <objects>
+                <viewController id="Home-VC" customClass="IntroductionViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="home-view">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🦁🐱🐰🐢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emoji-label">
+                                <rect key="frame" x="20" y="340" width="400" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="emoji-height"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Animal Are you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="title-label">
+                                <rect key="frame" x="30" y="420" width="380" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="title-height"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="begin-button">
+                                <rect key="frame" x="50" y="560" width="340" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="begin-height"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Begin Personality Quiz" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="Question-VC" kind="show" id="segue-to-question"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="results-button-home">
+                                <rect key="frame" x="20" y="198" width="80" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Results">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="QuizHistory-VC" kind="show" id="Hhs-aW-hxw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="select-quiz-button-home">
+                                <rect key="frame" x="309" y="198" width="111" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select Quiz">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="QuizSelection-VC" kind="presentation" id="segue-to-quiz-selection"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="home-safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="begin-button" firstAttribute="leading" secondItem="home-safe-area" secondAttribute="leading" constant="50" id="begin-leading"/>
+                            <constraint firstItem="begin-button" firstAttribute="top" secondItem="title-label" secondAttribute="bottom" constant="60" id="begin-top"/>
+                            <constraint firstItem="home-safe-area" firstAttribute="trailing" secondItem="begin-button" secondAttribute="trailing" constant="50" id="begin-trailing"/>
+                            <constraint firstItem="emoji-label" firstAttribute="centerX" secondItem="home-view" secondAttribute="centerX" id="emoji-center-x"/>
+                            <constraint firstItem="emoji-label" firstAttribute="leading" secondItem="home-safe-area" secondAttribute="leading" constant="20" id="emoji-leading"/>
+                            <constraint firstItem="emoji-label" firstAttribute="top" secondItem="home-safe-area" secondAttribute="top" constant="162" id="emoji-top"/>
+                            <constraint firstItem="home-safe-area" firstAttribute="trailing" secondItem="emoji-label" secondAttribute="trailing" constant="20" id="emoji-trailing"/>
+                            <constraint firstItem="results-button-home" firstAttribute="leading" secondItem="home-safe-area" secondAttribute="leading" constant="20" id="results-home-leading"/>
+                            <constraint firstItem="results-button-home" firstAttribute="top" secondItem="home-safe-area" secondAttribute="top" constant="20" id="results-home-top"/>
+                            <constraint firstItem="select-quiz-button-home" firstAttribute="top" secondItem="home-safe-area" secondAttribute="top" constant="20" id="select-home-top"/>
+                            <constraint firstItem="home-safe-area" firstAttribute="trailing" secondItem="select-quiz-button-home" secondAttribute="trailing" constant="20" id="select-home-trailing"/>
+                            <constraint firstItem="title-label" firstAttribute="leading" secondItem="home-safe-area" secondAttribute="leading" constant="30" id="title-leading"/>
+                            <constraint firstItem="title-label" firstAttribute="top" secondItem="emoji-label" secondAttribute="bottom" constant="20" id="title-top"/>
+                            <constraint firstItem="home-safe-area" firstAttribute="trailing" secondItem="title-label" secondAttribute="trailing" constant="30" id="title-trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="home-nav-item"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="title-label" id="YDq-5g-jcI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="home-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="100"/>
+        </scene>
+        <!--Question View Controller-->
+        <scene sceneID="question-scene">
+            <objects>
+                <viewController id="Question-VC" customClass="QuestionViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="question-view">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="main-stack">
+                                <rect key="frame" x="20" y="216.66666666666669" width="400" height="522.66666666666652"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="question-title">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="title-height-constraint"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which food do you like the most" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="question-subtitle">
+                                        <rect key="frame" x="0.0" y="70.000000000000028" width="400" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="progress-container">
+                                        <rect key="frame" x="0.0" y="120.33333333333334" width="400" height="30"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.33000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="question-progress">
+                                                <rect key="frame" x="0.0" y="13" width="346" height="4"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="progress-percentage">
+                                                <rect key="frame" x="356" y="5" width="44" height="20.333333333333332"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="progress-percentage-width"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="question-progress" firstAttribute="centerY" secondItem="progress-container" secondAttribute="centerY" id="progress-center-y"/>
+                                            <constraint firstAttribute="height" constant="30" id="progress-container-height"/>
+                                            <constraint firstItem="question-progress" firstAttribute="leading" secondItem="progress-container" secondAttribute="leading" id="progress-leading"/>
+                                            <constraint firstItem="progress-percentage" firstAttribute="centerY" secondItem="question-progress" secondAttribute="centerY" id="progress-percentage-center"/>
+                                            <constraint firstAttribute="trailing" secondItem="progress-percentage" secondAttribute="trailing" id="progress-percentage-trailing"/>
+                                            <constraint firstItem="progress-percentage" firstAttribute="leading" secondItem="question-progress" secondAttribute="trailing" constant="10" id="progress-to-percentage"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: 28s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="timer-label">
+                                        <rect key="frame" x="0.0" y="180.33333333333334" width="400" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="buttons-stack">
+                                        <rect key="frame" x="130.66666666666666" y="230.66666666666663" width="138.99999999999997" height="292"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="button1">
+                                                <rect key="frame" x="0.0" y="0.0" width="139" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="btn1-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Steak" cornerStyle="capsule">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                    <color key="baseBackgroundColor" red="0.68235294117647061" green="0.8784313725490196" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="button2">
+                                                <rect key="frame" x="0.0" y="65.000000000000057" width="139" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="btn2-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Fish" cornerStyle="capsule">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                    <color key="baseBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="button3">
+                                                <rect key="frame" x="0.0" y="130.00000000000006" width="139" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="btn3-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Carrots" cornerStyle="capsule">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                    <color key="baseBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="button4">
+                                                <rect key="frame" x="0.0" y="195.00000000000006" width="139" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="btn4-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Corn" cornerStyle="capsule">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                    <color key="baseBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="next-question-btn">
+                                                <rect key="frame" x="0.0" y="260.00000000000006" width="139" height="32"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Next Question →">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="switches-stack">
+                                        <rect key="frame" x="0.0" y="522.66666666666674" width="400" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="switch-row1">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="0.0"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swimming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="switch-label1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="switch1">
+                                                        <rect key="frame" x="339" y="0.0" width="63" height="0.0"/>
+                                                        <color key="onTintColor" systemColor="systemGreenColor"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="switch-row2">
+                                                <rect key="frame" x="0.0" y="20" width="400" height="0.0"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleeping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="switch-label2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="switch2">
+                                                        <rect key="frame" x="339" y="0.0" width="63" height="0.0"/>
+                                                        <color key="onTintColor" systemColor="systemGreenColor"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="switch-row3">
+                                                <rect key="frame" x="0.0" y="40" width="400" height="0.0"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="switch-label3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="switch3">
+                                                        <rect key="frame" x="339" y="0.0" width="63" height="0.0"/>
+                                                        <color key="onTintColor" systemColor="systemGreenColor"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="switch-row4">
+                                                <rect key="frame" x="0.0" y="60" width="400" height="0.0"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="switch-label4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="switch4">
+                                                        <rect key="frame" x="339" y="0.0" width="63" height="0.0"/>
+                                                        <color key="onTintColor" systemColor="systemGreenColor"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="submit-switches-btn">
+                                                <rect key="frame" x="0.0" y="80" width="400" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="submit-switches-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Submit Answer" cornerStyle="capsule">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="placeholder-switches">
+                                                <rect key="frame" x="0.0" y="150" width="400" height="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="1"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="submit-switches-btn" firstAttribute="leading" secondItem="switches-stack" secondAttribute="leading" id="submit-switches-leading"/>
+                                            <constraint firstItem="submit-switches-btn" firstAttribute="trailing" secondItem="switches-stack" secondAttribute="trailing" id="submit-switches-trailing"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="slider-stack">
+                                        <rect key="frame" x="0.0" y="522.66666666666674" width="400" height="110"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I dislike them" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dislike-label">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="answer-slider">
+                                                <rect key="frame" x="0.0" y="15" width="400" height="0.0"/>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I like them" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="like-label">
+                                                <rect key="frame" x="0.0" y="30" width="400" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="submit-slider-btn">
+                                                <rect key="frame" x="0.0" y="45" width="400" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="submit-slider-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Submit Answer" cornerStyle="capsule">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="Results-VC" kind="show" id="segue-to-results"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="placeholder-slider">
+                                                <rect key="frame" x="0.0" y="110" width="400" height="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="1"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="answer-slider" firstAttribute="leading" secondItem="slider-stack" secondAttribute="leading" id="answer-slider-leading"/>
+                                            <constraint firstItem="answer-slider" firstAttribute="trailing" secondItem="slider-stack" secondAttribute="trailing" id="answer-slider-trailing"/>
+                                            <constraint firstItem="dislike-label" firstAttribute="leading" secondItem="slider-stack" secondAttribute="leading" id="dislike-label-leading"/>
+                                            <constraint firstItem="dislike-label" firstAttribute="trailing" secondItem="slider-stack" secondAttribute="trailing" id="dislike-label-trailing"/>
+                                            <constraint firstItem="like-label" firstAttribute="leading" secondItem="slider-stack" secondAttribute="leading" id="like-label-leading"/>
+                                            <constraint firstItem="like-label" firstAttribute="trailing" secondItem="slider-stack" secondAttribute="trailing" id="like-label-trailing"/>
+                                            <constraint firstItem="submit-slider-btn" firstAttribute="leading" secondItem="slider-stack" secondAttribute="leading" id="submit-slider-btn-leading"/>
+                                            <constraint firstItem="submit-slider-btn" firstAttribute="trailing" secondItem="slider-stack" secondAttribute="trailing" id="submit-slider-btn-trailing"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="progress-container" firstAttribute="leading" secondItem="main-stack" secondAttribute="leading" id="progress-container-leading"/>
+                                    <constraint firstItem="progress-container" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" id="progress-container-trailing"/>
+                                    <constraint firstItem="question-subtitle" firstAttribute="leading" secondItem="main-stack" secondAttribute="leading" id="question-subtitle-leading"/>
+                                    <constraint firstItem="question-subtitle" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" id="question-subtitle-trailing"/>
+                                    <constraint firstItem="question-title" firstAttribute="leading" secondItem="main-stack" secondAttribute="leading" id="question-title-leading"/>
+                                    <constraint firstItem="question-title" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" id="question-title-trailing"/>
+                                    <constraint firstItem="slider-stack" firstAttribute="leading" secondItem="main-stack" secondAttribute="leading" id="slider-stack-leading"/>
+                                    <constraint firstItem="slider-stack" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" id="slider-stack-trailing"/>
+                                    <constraint firstItem="switches-stack" firstAttribute="leading" secondItem="main-stack" secondAttribute="leading" id="switches-stack-leading"/>
+                                    <constraint firstItem="switches-stack" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" id="switches-stack-trailing"/>
+                                    <constraint firstItem="timer-label" firstAttribute="leading" secondItem="main-stack" secondAttribute="leading" id="timer-label-leading"/>
+                                    <constraint firstItem="timer-label" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" id="timer-label-trailing"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="question-safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="main-stack" firstAttribute="centerY" secondItem="question-view" secondAttribute="centerY" id="stack-center-y"/>
+                            <constraint firstItem="main-stack" firstAttribute="leading" secondItem="question-safe-area" secondAttribute="leading" constant="20" id="stack-leading"/>
+                            <constraint firstItem="question-safe-area" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" constant="20" id="stack-trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="question-nav-item"/>
+                    <connections>
+                        <outlet property="multiLabel1" destination="switch-label1" id="1sC-yx-rYv"/>
+                        <outlet property="multiLabel2" destination="switch-label2" id="Exq-3E-H4s"/>
+                        <outlet property="multiLabel3" destination="switch-label3" id="h0X-sl-ogE"/>
+                        <outlet property="multiLabel4" destination="switch-label4" id="UJ1-0H-wef"/>
+                        <outlet property="multiSwitch1" destination="switch1" id="RWQ-gt-Zeg"/>
+                        <outlet property="multiSwitch2" destination="switch2" id="Oqv-HT-AMT"/>
+                        <outlet property="multiSwitch3" destination="switch3" id="Uci-7Y-GYx"/>
+                        <outlet property="multiSwitch4" destination="switch4" id="5sW-8h-Zd5"/>
+                        <outlet property="multipleStackView" destination="switches-stack" id="0vH-Tm-2c4"/>
+                        <outlet property="questionLabel" destination="question-subtitle" id="rob-bo-qOJ"/>
+                        <outlet property="rangedLabel1" destination="dislike-label" id="OjF-zD-0IE"/>
+                        <outlet property="rangedLabel2" destination="like-label" id="kqf-eC-raN"/>
+                        <outlet property="rangedSlider" destination="answer-slider" id="rNl-vm-VrO"/>
+                        <outlet property="rangedStackView" destination="slider-stack" id="szB-qh-a4A"/>
+                        <outlet property="singleButton1" destination="button1" id="Ito-Fa-Xrx"/>
+                        <outlet property="singleButton2" destination="button2" id="hrW-uC-Wk4"/>
+                        <outlet property="singleButton3" destination="button3" id="kzd-wt-Y4j"/>
+                        <outlet property="singleButton4" destination="button4" id="WBV-pC-L2N"/>
+                        <outlet property="singleStackView" destination="buttons-stack" id="dwZ-DI-4og"/>
+                        <outlet property="timerLabel" destination="timer-label" id="WMI-du-Hbp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="question-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="100"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="results-scene">
+            <objects>
+                <viewController id="Results-VC" customClass="ResultsViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="results-view">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are a 🦁!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="result-title">
+                                <rect key="frame" x="30" y="390" width="380" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="result-title-height"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are incredibly outgoing. You surround yourself with the people you love and enjoy activities with your friends !!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="result-description">
+                                <rect key="frame" x="40" y="490.00000000000006" width="360" height="64.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuV-6e-K6w">
+                                <rect key="frame" x="326" y="178" width="84" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Results">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="QuizHistory-VC" kind="show" id="15f-Rk-Re7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="results-safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="result-description" firstAttribute="leading" secondItem="results-safe-area" secondAttribute="leading" constant="40" id="result-desc-leading"/>
+                            <constraint firstItem="result-description" firstAttribute="top" secondItem="result-title" secondAttribute="bottom" constant="40" id="result-desc-top"/>
+                            <constraint firstItem="results-safe-area" firstAttribute="trailing" secondItem="result-description" secondAttribute="trailing" constant="40" id="result-desc-trailing"/>
+                            <constraint firstItem="result-title" firstAttribute="centerX" secondItem="results-view" secondAttribute="centerX" id="result-title-center-x"/>
+                            <constraint firstItem="result-title" firstAttribute="leading" secondItem="results-safe-area" secondAttribute="leading" constant="30" id="result-title-leading"/>
+                            <constraint firstItem="result-title" firstAttribute="top" secondItem="results-safe-area" secondAttribute="top" constant="212" id="result-title-top"/>
+                            <constraint firstItem="results-safe-area" firstAttribute="trailing" secondItem="result-title" secondAttribute="trailing" constant="30" id="result-title-trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="results-nav-item"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="results-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899.5454545454547" y="99.790794979079507"/>
+        </scene>
+        <!--Quiz Selection View Controller-->
+        <scene sceneID="quiz-selection-scene">
+            <objects>
+                <viewController id="QuizSelection-VC" customClass="QuizSelectionViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="quiz-selection-view">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="894"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="header-view">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quiz-select-title">
+                                        <rect key="frame" x="20" y="60" width="127" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="quiz-select-title-height"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="header-view-height"/>
+                                    <constraint firstItem="quiz-select-title" firstAttribute="bottom" secondItem="header-view" secondAttribute="bottom" constant="-30" id="quiz-select-title-bottom"/>
+                                    <constraint firstItem="quiz-select-title" firstAttribute="leading" secondItem="header-view" secondAttribute="leading" constant="20" id="quiz-select-title-leading"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a personality quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quiz-subtitle">
+                                <rect key="frame" x="20" y="150" width="400" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quiz-option1-button">
+                                <rect key="frame" x="20" y="210.33333333333334" width="400" height="80.000000000000028"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="quiz-option1-button-height"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" title="  🦁🐱🐰🐢  Which Animal Are You?">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" title="  🦁🐱🐰🐢  Which Animal Are You?">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="animalQuizButtonPressed:" destination="QuizSelection-VC" eventType="touchUpInside" id="Gjp-na-vRs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quiz-option2-button">
+                                <rect key="frame" x="20" y="310.33333333333331" width="400" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="quiz-option2-button-height"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" title="  🔴🟡🟢🔵  What's Your Color?">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" title="  🔴🟡🟢🔵  What's Your Color?">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="colorQuizButtonPressed:" destination="QuizSelection-VC" eventType="touchUpInside" id="JGG-AE-pJg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cancel-button">
+                                <rect key="frame" x="70" y="824" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cancel-button-height"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="QuizSelection-VC" eventType="touchUpInside" id="YVT-uS-zsT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="quiz-safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="quiz-safe-area" firstAttribute="bottom" secondItem="cancel-button" secondAttribute="bottom" constant="20" id="cancel-button-bottom"/>
+                            <constraint firstItem="cancel-button" firstAttribute="leading" secondItem="quiz-safe-area" secondAttribute="leading" constant="70" id="cancel-button-leading"/>
+                            <constraint firstItem="quiz-safe-area" firstAttribute="trailing" secondItem="cancel-button" secondAttribute="trailing" constant="70" id="cancel-button-trailing"/>
+                            <constraint firstItem="header-view" firstAttribute="leading" secondItem="quiz-safe-area" secondAttribute="leading" id="header-view-leading"/>
+                            <constraint firstItem="header-view" firstAttribute="top" secondItem="quiz-selection-view" secondAttribute="top" id="header-view-top"/>
+                            <constraint firstItem="quiz-safe-area" firstAttribute="trailing" secondItem="header-view" secondAttribute="trailing" id="header-view-trailing"/>
+                            <constraint firstItem="quiz-option1-button" firstAttribute="leading" secondItem="quiz-safe-area" secondAttribute="leading" constant="20" id="quiz-option1-button-leading"/>
+                            <constraint firstItem="quiz-option1-button" firstAttribute="top" secondItem="quiz-subtitle" secondAttribute="bottom" constant="40" id="quiz-option1-button-top"/>
+                            <constraint firstItem="quiz-safe-area" firstAttribute="trailing" secondItem="quiz-option1-button" secondAttribute="trailing" constant="20" id="quiz-option1-button-trailing"/>
+                            <constraint firstItem="quiz-option2-button" firstAttribute="leading" secondItem="quiz-option1-button" secondAttribute="leading" id="quiz-option2-button-leading"/>
+                            <constraint firstItem="quiz-option2-button" firstAttribute="top" secondItem="quiz-option1-button" secondAttribute="bottom" constant="20" id="quiz-option2-button-top"/>
+                            <constraint firstItem="quiz-option2-button" firstAttribute="trailing" secondItem="quiz-option1-button" secondAttribute="trailing" id="quiz-option2-button-trailing"/>
+                            <constraint firstItem="quiz-subtitle" firstAttribute="leading" secondItem="quiz-safe-area" secondAttribute="leading" constant="20" id="quiz-subtitle-leading"/>
+                            <constraint firstItem="quiz-subtitle" firstAttribute="top" secondItem="header-view" secondAttribute="bottom" constant="30" id="quiz-subtitle-top"/>
+                            <constraint firstItem="quiz-safe-area" firstAttribute="trailing" secondItem="quiz-subtitle" secondAttribute="trailing" constant="20" id="quiz-subtitle-trailing"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animalQuizButton" destination="quiz-option1-button" id="QNP-aT-i0v"/>
+                        <outlet property="colorQuizButton" destination="quiz-option2-button" id="qjd-Xp-HhL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="quiz-selection-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="900"/>
+        </scene>
+        <!--History Table View Controller-->
+        <scene sceneID="quiz-history-scene">
+            <objects>
+                <viewController id="QuizHistory-VC" customClass="HistoryTableViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="history-view">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="back-button-history">
+                                <rect key="frame" x="19.999999999999996" y="198" width="61.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clear-button-history">
+                                <rect key="frame" x="356" y="198" width="64" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="history-title">
+                                <rect key="frame" x="30" y="263" width="380" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="history-title-height"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="history-item1">
+                                <rect key="frame" x="30" y="333" width="380" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🦁 You are a 🦁!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item1-result">
+                                        <rect key="frame" x="20" y="15" width="340" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Animal Are You?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item1-quiz">
+                                        <rect key="frame" x="20" y="44" width="340" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 15, 2026 2:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item1-date">
+                                        <rect key="frame" x="20" y="70" width="340" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m 45s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item1-time">
+                                        <rect key="frame" x="20" y="88" width="340" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="item1-date" firstAttribute="leading" secondItem="item1-result" secondAttribute="leading" id="item1-date-leading"/>
+                                    <constraint firstItem="item1-date" firstAttribute="top" secondItem="item1-quiz" secondAttribute="bottom" constant="5" id="item1-date-top"/>
+                                    <constraint firstItem="item1-date" firstAttribute="trailing" secondItem="item1-result" secondAttribute="trailing" id="item1-date-trailing"/>
+                                    <constraint firstAttribute="height" constant="120" id="item1-height"/>
+                                    <constraint firstItem="item1-quiz" firstAttribute="leading" secondItem="item1-result" secondAttribute="leading" id="item1-quiz-leading"/>
+                                    <constraint firstItem="item1-quiz" firstAttribute="top" secondItem="item1-result" secondAttribute="bottom" constant="5" id="item1-quiz-top"/>
+                                    <constraint firstItem="item1-quiz" firstAttribute="trailing" secondItem="item1-result" secondAttribute="trailing" id="item1-quiz-trailing"/>
+                                    <constraint firstItem="item1-result" firstAttribute="leading" secondItem="history-item1" secondAttribute="leading" constant="20" id="item1-result-leading"/>
+                                    <constraint firstItem="item1-result" firstAttribute="top" secondItem="history-item1" secondAttribute="top" constant="15" id="item1-result-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="item1-result" secondAttribute="trailing" constant="20" id="item1-result-trailing"/>
+                                    <constraint firstItem="item1-time" firstAttribute="leading" secondItem="item1-result" secondAttribute="leading" id="item1-time-leading"/>
+                                    <constraint firstItem="item1-time" firstAttribute="top" secondItem="item1-date" secondAttribute="bottom" id="item1-time-top"/>
+                                    <constraint firstItem="item1-time" firstAttribute="trailing" secondItem="item1-result" secondAttribute="trailing" id="item1-time-trailing"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="history-item2">
+                                <rect key="frame" x="30" y="473" width="380" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐱 You are a 🐱!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item2-result">
+                                        <rect key="frame" x="20" y="15" width="340" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Animal Are You?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item2-quiz">
+                                        <rect key="frame" x="20" y="44" width="340" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 14, 2026 10:15 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item2-date">
+                                        <rect key="frame" x="20" y="70" width="340" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2m 12s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item2-time">
+                                        <rect key="frame" x="20" y="88" width="340" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="item2-date" firstAttribute="leading" secondItem="item2-result" secondAttribute="leading" id="item2-date-leading"/>
+                                    <constraint firstItem="item2-date" firstAttribute="top" secondItem="item2-quiz" secondAttribute="bottom" constant="5" id="item2-date-top"/>
+                                    <constraint firstItem="item2-date" firstAttribute="trailing" secondItem="item2-result" secondAttribute="trailing" id="item2-date-trailing"/>
+                                    <constraint firstAttribute="height" constant="120" id="item2-height"/>
+                                    <constraint firstItem="item2-quiz" firstAttribute="leading" secondItem="item2-result" secondAttribute="leading" id="item2-quiz-leading"/>
+                                    <constraint firstItem="item2-quiz" firstAttribute="top" secondItem="item2-result" secondAttribute="bottom" constant="5" id="item2-quiz-top"/>
+                                    <constraint firstItem="item2-quiz" firstAttribute="trailing" secondItem="item2-result" secondAttribute="trailing" id="item2-quiz-trailing"/>
+                                    <constraint firstItem="item2-result" firstAttribute="leading" secondItem="history-item2" secondAttribute="leading" constant="20" id="item2-result-leading"/>
+                                    <constraint firstItem="item2-result" firstAttribute="top" secondItem="history-item2" secondAttribute="top" constant="15" id="item2-result-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="item2-result" secondAttribute="trailing" constant="20" id="item2-result-trailing"/>
+                                    <constraint firstItem="item2-time" firstAttribute="leading" secondItem="item2-result" secondAttribute="leading" id="item2-time-leading"/>
+                                    <constraint firstItem="item2-time" firstAttribute="top" secondItem="item2-date" secondAttribute="bottom" id="item2-time-top"/>
+                                    <constraint firstItem="item2-time" firstAttribute="trailing" secondItem="item2-result" secondAttribute="trailing" id="item2-time-trailing"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="history-item3">
+                                <rect key="frame" x="30" y="613" width="380" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔴 You are a Red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-result">
+                                        <rect key="frame" x="20" y="15" width="340" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Animal Are You?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-quiz">
+                                        <rect key="frame" x="20" y="44" width="340" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 13, 2026 4:20 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-date">
+                                        <rect key="frame" x="20" y="70" width="340" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m 30s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="item3-time">
+                                        <rect key="frame" x="20" y="88" width="340" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="item3-date" firstAttribute="leading" secondItem="item3-result" secondAttribute="leading" id="item3-date-leading"/>
+                                    <constraint firstItem="item3-date" firstAttribute="top" secondItem="item3-quiz" secondAttribute="bottom" constant="5" id="item3-date-top"/>
+                                    <constraint firstItem="item3-date" firstAttribute="trailing" secondItem="item3-result" secondAttribute="trailing" id="item3-date-trailing"/>
+                                    <constraint firstAttribute="height" constant="120" id="item3-height"/>
+                                    <constraint firstItem="item3-quiz" firstAttribute="leading" secondItem="item3-result" secondAttribute="leading" id="item3-quiz-leading"/>
+                                    <constraint firstItem="item3-quiz" firstAttribute="top" secondItem="item3-result" secondAttribute="bottom" constant="5" id="item3-quiz-top"/>
+                                    <constraint firstItem="item3-quiz" firstAttribute="trailing" secondItem="item3-result" secondAttribute="trailing" id="item3-quiz-trailing"/>
+                                    <constraint firstItem="item3-result" firstAttribute="leading" secondItem="history-item3" secondAttribute="leading" constant="20" id="item3-result-leading"/>
+                                    <constraint firstItem="item3-result" firstAttribute="top" secondItem="history-item3" secondAttribute="top" constant="15" id="item3-result-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="item3-result" secondAttribute="trailing" constant="20" id="item3-result-trailing"/>
+                                    <constraint firstItem="item3-time" firstAttribute="leading" secondItem="item3-result" secondAttribute="leading" id="item3-time-leading"/>
+                                    <constraint firstItem="item3-time" firstAttribute="top" secondItem="item3-date" secondAttribute="bottom" id="item3-time-top"/>
+                                    <constraint firstItem="item3-time" firstAttribute="trailing" secondItem="item3-result" secondAttribute="trailing" id="item3-time-trailing"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="history-safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="back-button-history" firstAttribute="leading" secondItem="history-safe-area" secondAttribute="leading" constant="20" id="history-back-leading"/>
+                            <constraint firstItem="back-button-history" firstAttribute="top" secondItem="history-safe-area" secondAttribute="top" constant="20" id="history-back-top"/>
+                            <constraint firstItem="clear-button-history" firstAttribute="top" secondItem="history-safe-area" secondAttribute="top" constant="20" id="history-clear-top"/>
+                            <constraint firstItem="history-safe-area" firstAttribute="trailing" secondItem="clear-button-history" secondAttribute="trailing" constant="20" id="history-clear-trailing"/>
+                            <constraint firstItem="history-title" firstAttribute="leading" secondItem="history-safe-area" secondAttribute="leading" constant="30" id="history-title-leading"/>
+                            <constraint firstItem="history-title" firstAttribute="top" secondItem="back-button-history" secondAttribute="bottom" constant="30" id="history-title-top"/>
+                            <constraint firstItem="history-safe-area" firstAttribute="trailing" secondItem="history-title" secondAttribute="trailing" constant="30" id="history-title-trailing"/>
+                            <constraint firstItem="history-item1" firstAttribute="leading" secondItem="history-safe-area" secondAttribute="leading" constant="30" id="item1-leading-constraint"/>
+                            <constraint firstItem="history-item1" firstAttribute="top" secondItem="history-title" secondAttribute="bottom" constant="30" id="item1-top-constraint"/>
+                            <constraint firstItem="history-safe-area" firstAttribute="trailing" secondItem="history-item1" secondAttribute="trailing" constant="30" id="item1-trailing-constraint"/>
+                            <constraint firstItem="history-item2" firstAttribute="leading" secondItem="history-item1" secondAttribute="leading" id="item2-leading-constraint"/>
+                            <constraint firstItem="history-item2" firstAttribute="top" secondItem="history-item1" secondAttribute="bottom" constant="20" id="item2-top-constraint"/>
+                            <constraint firstItem="history-item2" firstAttribute="trailing" secondItem="history-item1" secondAttribute="trailing" id="item2-trailing-constraint"/>
+                            <constraint firstItem="history-item3" firstAttribute="leading" secondItem="history-item1" secondAttribute="leading" id="item3-leading-constraint"/>
+                            <constraint firstItem="history-item3" firstAttribute="top" secondItem="history-item2" secondAttribute="bottom" constant="20" id="item3-top-constraint"/>
+                            <constraint firstItem="history-item3" firstAttribute="trailing" secondItem="history-item1" secondAttribute="trailing" id="item3-trailing-constraint"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="history-nav-item"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="history-responder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900" y="900"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Hhs-aW-hxw"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
