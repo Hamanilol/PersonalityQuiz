@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57525AA72F41231A00B83D73 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 57525AA62F41231A00B83D73 /* README.md */; };
 		575EA0132F3E447E0053CAE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575EA0122F3E447E0053CAE3 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57525AA62F41231A00B83D73 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		575EA0122F3E447E0053CAE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		575EA0252F3E8EB60053CAE3 /* PersonalityQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalityQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -53,6 +55,7 @@
 				57BCB5E42F3D2C1A00C736B6 /* PersonalityQuiz */,
 				575EA0122F3E447E0053CAE3 /* Assets.xcassets */,
 				575EA0252F3E8EB60053CAE3 /* PersonalityQuiz.app */,
+				57525AA62F41231A00B83D73 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57525AA72F41231A00B83D73 /* README.md in Resources */,
 				575EA0132F3E447E0053CAE3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
