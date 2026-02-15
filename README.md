@@ -254,26 +254,6 @@ func createAnswerButtons(for answers: [Answer]) {
    - Press **⌘R** or click the **Play** button
    - App should launch in simulator
 
-### Troubleshooting
-
-**Black screen on launch:**
-- Ensure `Info.plist` has `UIApplicationSceneManifest` configured
-- Verify `Main.storyboard` is set as Main Interface in target settings
-- Check Console for error messages
-
-**Build errors:**
-- Clean build folder: **⇧⌘K** (Shift-Command-K)
-- Delete derived data: `rm -rf ~/Library/Developer/Xcode/DerivedData/PersonalityQuiz-*`
-- Restart Xcode
-
-**Outlet connection crashes:**
-- Open `Main.storyboard`
-- Select view controller
-- Open **Connections Inspector** (⌥⌘6)
-- Verify all outlets show filled circles ⚫ (not empty ⭕)
-
----
-
 ## 🎮 How to Use
 
 ### Taking a Quiz
@@ -352,75 +332,6 @@ func createAnswerButtons(for answers: [Answer]) {
 - Clear button with confirmation
 - Back button
 
----
-
-## 🧪 Testing
-
-### Test Checklist
-
-**Navigation:**
-- [ ] App launches to introduction screen
-- [ ] "Select Quiz" opens quiz selection
-- [ ] Quiz selection shows both quiz options
-- [ ] "Cancel" returns to introduction
-- [ ] "Begin Quiz" starts selected quiz
-- [ ] "Done" from results returns to introduction
-- [ ] "Results" opens history screen
-- [ ] "Back" from history returns to introduction
-
-**Question Types:**
-- [ ] Single answer questions display 4 buttons
-- [ ] Tapping button advances to next question
-- [ ] Multiple answer questions show 4 switches
-- [ ] Can toggle multiple switches
-- [ ] Submit button enabled for multiple answer
-- [ ] Ranged questions show slider
-- [ ] Can drag slider
-- [ ] Submit button enabled for ranged
-
-**Timer:**
-- [ ] Timer starts at 30 seconds
-- [ ] Timer counts down every second
-- [ ] Question auto-advances when timer reaches 0
-- [ ] Timer resets for each question
-- [ ] Total time tracked correctly
-
-**Randomization:**
-- [ ] Questions appear in different order each quiz
-- [ ] Answers within questions are shuffled
-- [ ] Taking same quiz twice shows different order
-
-**Results:**
-- [ ] Correct personality result calculated
-- [ ] Result emoji displays
-- [ ] Result description shows
-- [ ] Result matches selected answers
-
-**History:**
-- [ ] Completed quiz appears in history
-- [ ] Result text correct
-- [ ] Quiz name correct
-- [ ] Date formatted properly
-- [ ] Time taken displayed in seconds
-- [ ] Multiple quizzes all saved
-- [ ] Most recent appears first
-- [ ] Clear button shows confirmation
-- [ ] Clear button removes all history
-- [ ] Empty history shows all items hidden
-
-**Edge Cases:**
-- [ ] Timer at 0 doesn't go negative
-- [ ] Can't submit multiple answer with none selected
-- [ ] History handles 0, 1, 2, and 3+ results
-- [ ] Long quiz names don't break layout
-- [ ] App doesn't crash on rapid button taps
-
----
-
-## 📚 Code Documentation
-
-### Inline Comments
-
 All code includes comprehensive documentation:
 - **Class headers** explain purpose and responsibilities
 - **MARK comments** organize code sections
@@ -457,45 +368,12 @@ class ViewController: UIViewController {
 
 ---
 
-## 🎯 Assessment Compliance
-
-### Part 1: Personality Quiz - 150 marks
-
-| Requirement | Status | Notes |
-|-------------|--------|-------|
-| **Setup & README** (5 marks) | ✅ Complete | Comprehensive setup instructions |
-| **Sample Data** (5 marks) | ✅ Complete | Two full quizzes with 6 questions each |
-| **Base Implementation** (20 marks) | ✅ Complete | Full guided project completed |
-| **High-Fidelity Prototype** (10 marks) | ⚠️ Pending | Figma link to be added |
-| **Visual Design/UI/UX** (10 marks) | ✅ Complete | All design principles applied |
-| **Stretch Goal 1** (20 marks) | ✅ Complete | Multiple quiz selection |
-| **Stretch Goal 2** (20 marks) | ✅ Complete | Question and answer randomization |
-| **Stretch Goal 3** (20 marks) | ✅ Complete | Dynamic answer counts |
-| **Stretch Goal 4** (20 marks) | ✅ Complete | Quiz history with persistence |
-| **Stretch Goal 5** (20 marks) | ✅ Complete | Question timer implementation |
-| **Industry Standards** | ✅ Complete | Clean code, MVC pattern, documentation |
-| **App Stability** | ✅ Complete | No crashes, no warnings |
-
-**Current Status:** 140/150 (93.3%) - Pending Figma prototype
-
-### Industry Standards Met
-
-✅ **Clean naming conventions** - Descriptive variable and function names  
-✅ **Proper indentation** - Xcode default formatting throughout  
-✅ **Clear commenting** - All complex logic explained  
-✅ **MVC architecture** - Strict separation of concerns  
-✅ **No compiler warnings** - Clean build  
-✅ **No crashes** - Thorough testing completed  
-✅ **Efficient memory management** - Weak references, proper deallocation  
-✅ **UIKit implementation** - All code uses UIKit as required  
-
----
-
+#
 ## 🎨 Figma Prototype
 
 ### Interactive Prototype Link
 
-🔗 **[View Figma Prototype](#)** *(Link to be added)*
+🔗 **[View Figma Prototype](https://www.figma.com/design/NdWjCzxK6OThvUfPN9xskt/Untitled?node-id=0-1&p=f&t=RstcwEtLLorNm5ju-0)** *(Link to be added)*
 
 ### Prototype Features
 
@@ -573,57 +451,3 @@ The Figma prototype includes:
 ### Code Attribution
 
 All code is original implementation following the assessment requirements. No third-party code or libraries were used.
-
----
-
-## 👨‍💻 Developer Information
-
-**Student Name:** May Abdulla  
-**Student ID:** [Your Student ID]  
-**Course:** IT8108 - Mobile Programming  
-**Submission:** Re-Assessment 2025-2026  
-**Date:** February 15, 2026
-
----
-
-## 📄 License
-
-This project is submitted as academic coursework for IT8108 Mobile Programming. All rights reserved.
-
----
-
-## 🙏 Acknowledgments
-
-- **Apple Education** - Develop with Swift curriculum and guided project structure
-- **IT8108 Course Team** - Assessment guidelines and requirements
-- **UIKit Framework** - Comprehensive iOS UI components
-
----
-
-## 📅 Version History
-
-### v1.0.0 (February 15, 2026)
-- ✅ Initial release
-- ✅ All base requirements implemented
-- ✅ All 5 stretch goals completed
-- ✅ Quiz history with persistence
-- ✅ Timer functionality
-- ✅ Multiple quiz selection
-- ✅ Question and answer randomization
-- ✅ Dynamic answer UI generation
-- ✅ Comprehensive documentation
-- ⚠️ Figma prototype pending
-
----
-
-## 📞 Support
-
-For questions or issues:
-- **Email:** [your.email@example.com]
-- **GitHub Issues:** [Repository Issues Page]
-
----
-
-**Built with ❤️ using Swift and UIKit**
-
-*Last updated: February 15, 2026*
